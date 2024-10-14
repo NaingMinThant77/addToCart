@@ -1,16 +1,33 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { itemContext } from '../store/itemContent';
 
 const Card = ({fruit}) => {
+  const {id, name, description, price} = fruit;
+  const {addItem} = useContext(itemContext)
+  const [currentAmount, setCurrentAmount] = useState(1);
+  const currentAmountNumber = +currentAmount; //change into number
+
+  const addToCartHandler = () => {
+    if(currentAmountNumber < 1 || currentAmountNumber > 5) {
+      alert("Please enter a valid amount !!")
+      return;
+    }
+    addItem({
+      id, name, price, amount: currentAmountNumber
+    })
+  }
+
   return (
     <div className='card'>
       <div>
-        <p className='card-title'>{fruit.name}</p>
-        <p className='card-description'>{fruit.description}</p>
-        <p className='card-price'>$ {fruit.price}</p>
+        <p className='card-title'>{name}</p>
+        <p className='card-description'>{description}</p>
+        <p className='card-price'>$ {price}</p>
       </div>
       <div className='card-right'>
-        <input type="number" className='card-input' min={1} max={5} value={1} />
-        <button className='card-button'>+ ADD</button>
+        <input type="number" className='card-input' min={1} max={5} value={currentAmount}
+            onChange={(e) => {setCurrentAmount(e.target.value)}} />
+        <button className='card-button' onClick={addToCartHandler}>+ ADD</button>
       </div>
     </div>
   )

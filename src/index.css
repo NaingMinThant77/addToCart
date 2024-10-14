@@ -88,7 +88,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 20;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,10 +97,18 @@
 .cart-box {
     background-color: white;
     padding: 20px 80px;
-    width: 80%;
-    position: relative;
-    z-index: 1000;
+    width: 70%;
+    position: fixed;
+    z-index: 30;
     border-radius: 8px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.overflow-ctr {
+    height: 380px;
+    overflow-y: scroll ;
 }
 
 .cart {
@@ -143,4 +151,34 @@
     font-weight: 600;
     font-size: 18px;
     margin-right: 20px;
+}
+
+.card-quantity {
+    padding: 4px 6px;
+    background-color: orange;
+    text-align: center;
+    font-weight: 500;
+    color: white;
+    border-radius: 10px;
+}
+
+.quantity-btn {
+    border: 1px solid orange;
+    background-color: transparent;
+    color: orange;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.m-ctr {
+    margin-right: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.no-item {
+    text-align: center;
 }
